@@ -8,8 +8,9 @@ export interface UsersResponse {
 export interface Usuario {
   rol: string;
   estado: boolean;
-  google: boolean;
+  google?: boolean;
   nombre: string;
   correo: string;
-  uid: string;
+  uid?: string | null;
+  new?: boolean;
 }

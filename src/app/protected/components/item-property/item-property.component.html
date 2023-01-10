@@ -1,4 +1,74 @@
-<div class="d-flex justify-content-between mt-2">
-    <h4 style="color: #c2185b"><b>{{label}}</b></h4>
-    <h5 class="ml-3">{{ value }}</h5>
-</div>
+<form [formGroup]="userForm" (submit)="submit()">
+  <div class="p-1 w-100 d-flex justify-content-between">
+    <div class="d-flex justify-content-start">
+      <button
+        [disabled]="canEdit"
+        mat-fab
+        color="primary"
+        aria-label="btn to press ok"
+        type="button"
+        (click)="onDelete()"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button mat-fab color="dark" aria-label="btn to press ok" type="submit">
+        <mat-icon *ngIf="canEdit">edit</mat-icon>
+        <mat-icon *ngIf="!canEdit">save</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="name" class="form-label">Nombre</label>
+    <input
+      formControlName="nombre"
+      type="text"
+      class="form-control"
+      id="name"
+      [readOnly]="canEdit"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo</label>
+    <input
+      formControlName="correo"
+      type="email"
+      class="form-control"
+      id="email"
+      [readOnly]="canEdit"
+    />
+  </div>
+  <div class="mb-3" *ngIf="user.new">
+    <label for="password" class="form-label">Contraseña</label>
+    <input
+      formControlName="password"
+      type="password"
+      class="form-control"
+      id="password"
+      [readOnly]="canEdit"
+    />
+  </div>
+  <div class="mb-3 d-flex flex-column">
+    <label for="state" class="form-label">Estado</label>
+    <div class="d-flex justify-content-between">
+      <mat-slide-toggle
+        formControlName="estado"
+        [disabled]="canEdit"
+        (change)="tootgleSlide()"
+      >
+      </mat-slide-toggle>
+      <span>{{ user.estado && isActive ? "ACTIVO" : "INACTIVO" }}</span>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="rol" class="form-label">Rol</label>
+    <input
+      type="text"
+      class="form-control"
+      id="rol"
+      formControlName="rol"
+      [readOnly]="canEdit"
+    />
+  </div>
+</form>

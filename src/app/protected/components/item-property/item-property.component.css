@@ -1,0 +1,14 @@
+.row-container {
+  display: flex;
+  justify-content: center;
+}
+
+.zoom {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.zoom:hover {
+  transform: scale(1.1);
+}
+

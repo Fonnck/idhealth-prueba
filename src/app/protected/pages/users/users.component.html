@@ -1,28 +1,20 @@
 <div class="d-flex justify-content-center align-items-center flex-column">
   <div class="header-module">
     <h1>Usuarios</h1>
-    <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+    <button
+      mat-fab
+      color="primary"
+      aria-label="btn to press ok"
+      (click)="onAdd()"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </div>
-
-    <mat-card class="mt-3 w-50 zoom" *ngFor="let user of users">
+  <div class="wrapper">
+    <mat-card class="mt-3 animate__animated animate__fadeIn zoom" *ngFor="let user of users">
       <mat-card-content>
-        <app-item-property label="Nombre:" value="{{ user.nombre }}" >
-        </app-item-property>
-        
-        <app-item-property label="Correo:" value="{{ user.correo }}" >
-        </app-item-property>
-        
-        <app-item-property label="Estado:" value="{{ user.estado ? 'ACTIVO' : 'INACTIVO' }}" >
-        </app-item-property>
-        
-        <app-item-property label="Rol:" value="{{ user.rol }}" >
-        </app-item-property>
-
+        <app-item-property [user]="user" (updateList)="updateList($event)" (deleteElement)="onRemove($event)"></app-item-property>
       </mat-card-content>
     </mat-card>
-  <!--   <div class="mt-3">
-    
-  </div> -->
+  </div>
 </div>

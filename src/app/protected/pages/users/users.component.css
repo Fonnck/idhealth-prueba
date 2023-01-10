@@ -1,14 +1,14 @@
-.zoom{
-    cursor: pointer;
-    transition: transform .2s;
+.header-module {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.zoom:hover {
-    transform: scale(1.1);
-}
-
-.header-module{
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
+.wrapper {
+  width: 100%;
+  padding: 10vh;    
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-column-gap: 2vh;
+  grid-row-gap: 2vh;
 }

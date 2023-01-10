@@ -6,7 +6,8 @@ export interface AuthResponse {
 }
 
 export interface Usuario {
-    uid:    string;
+    new?: boolean;
+    uid:    string | null;
     correo: string;
     nombre: string;
     rol:    string;

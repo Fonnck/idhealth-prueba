@@ -17,11 +17,16 @@ export class UsersComponent implements OnInit {
   /* displayedColumns: string[] = ['Nombre', 'Correo', 'Rol', 'Estado']; */
   users: Usuario[] = [];
 
+  updateList(e: boolean) {
+    console.log(e);
+    e ? this.getAllUsers() : null;
+  }
+
   getAllUsers(): void {
     this.globalService.getUsers().subscribe((resp) => {
       console.log(resp);
       if (resp.total) {
-        this.users = resp.usuarios
+        this.users = resp.usuarios;
       } else {
         Swal.fire({
           icon: 'error',
@@ -31,4 +36,19 @@ export class UsersComponent implements OnInit {
       }
     });
   }
+
+  onAdd() {
+    this.users.unshift({
+      new: true,
+      nombre: '',
+      correo: '',
+      estado: true,
+      rol: 'ADMIN_ROLE',
+    });
+  }
+
+  onRemove(e: boolean) {
+    e ? this.users.shift() : null;
+  }
+  /* toogleUser */
 }
