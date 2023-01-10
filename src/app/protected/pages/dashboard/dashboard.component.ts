@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
+import { map, Observable, shareReplay } from 'rxjs';
+import { MENU_ITEMS } from '../../../constants/index';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map((result) => result.matches),
+      shareReplay()
+    );
 
-  constructor() { }
+    public menu_items = MENU_ITEMS;
 
-  ngOnInit(): void {
-  }
-
+    constructor(private breakpointObserver: BreakpointObserver) {}
 }

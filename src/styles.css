@@ -328,7 +328,7 @@ button:hover {
   background: linear-gradient(
     90deg,
     rgba(96, 207, 220, 1) 0%,
-    rgba(190, 52, 218, 1) 92%
+    rgb(39, 198, 113) 92%
   );
   top: 0;
   left: -100%;
@@ -7075,3 +7075,6 @@ button:hover {
   -ms-align-items: center;
   align-items: center;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
