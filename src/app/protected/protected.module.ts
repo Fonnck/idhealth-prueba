@@ -9,16 +9,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 import { CategoryComponent } from './pages/category/category.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { UsersComponent } from './pages/users/users.component';
+import { QuickwinsComponent } from './pages/quickwins/quickwins.component';
+import { QuickItemComponent } from './pages/quickwins/quick-item/quick-item.component';
+import { ItemPropertyComponent } from './components/item-property/item-property.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CategoryComponent,
     ProductsComponent,
-    UsersComponent
+    UsersComponent,
+    QuickwinsComponent,
+    QuickItemComponent,
+    ItemPropertyComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +36,9 @@ import { UsersComponent } from './pages/users/users.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatCardModule
   ]
 })
 export class ProtectedModule { }

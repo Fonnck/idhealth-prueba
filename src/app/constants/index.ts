@@ -5,7 +5,7 @@ export const MENU_ITEMS = [
     },
     {
         label: 'Producto',
-        path: '/dashboard/product'
+        path: '/dashboard/products'
     },
     {
         label: 'Usuarios',

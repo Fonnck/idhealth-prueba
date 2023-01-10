@@ -1,0 +1,14 @@
+.zoom{
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.zoom:hover {
+    transform: scale(1.1);
+}
+
+.header-module{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}

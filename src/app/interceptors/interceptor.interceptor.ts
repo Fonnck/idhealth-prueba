@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable()
 export class InterceptorInterceptor implements HttpInterceptor {
   constructor() {}
@@ -16,7 +17,14 @@ export class InterceptorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     /* const headers: HttpHeaders = */
-    console.log(request);
-    return next.handle(request);
+    console.log("INTERCEPTOR", request);
+    return next.handle( this.setXToken(request));
+  }
+
+  setXToken(request: HttpRequest<any> ) {
+    const token = localStorage.getItem('token');
+    return request.clone({
+      setHeaders: {'x-token': token || ''}
+    })
   }
 }

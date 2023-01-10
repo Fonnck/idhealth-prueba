@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { ProtectedModule } from './protected/protected.module';
-
+import { InterceptorInterceptor } from './interceptors/interceptor.interceptor';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,9 +16,15 @@ import { ProtectedModule } from './protected/protected.module';
     HttpClientModule,
     BrowserAnimationsModule,
     AuthModule,
-    ProtectedModule
+    ProtectedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
