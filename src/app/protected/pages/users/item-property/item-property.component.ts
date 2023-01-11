@@ -2,8 +2,8 @@ import 'animate.css';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/auth/interfaces';
-import { emailPattern } from '../../../utils/index';
-import { GlobalService } from '../../services/global.service';
+import { emailPattern } from '../../../../utils/index';
+import { GlobalService } from '../../../services/global.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -60,9 +60,10 @@ export class ItemPropertyComponent implements OnInit {
       console.log(typeof resp);
       if (resp.uid != null) {
         this.updateList.emit(true);
+        Swal.fire('Usuario actualizado con éxito!', '', 'success');
       } else {
         this.updateList.emit(false);
-        Swal.fire({});
+        Swal.fire('Opss!', 'Ha ocurrido un error', 'error');
       }
     });
   }
@@ -74,11 +75,12 @@ export class ItemPropertyComponent implements OnInit {
     .subscribe((resp: any) => {
       console.log('USUARIO', resp.uid);
       console.log(typeof resp);
-      if (resp.uid != null) {
+      if (resp.usuario.uid != null) {
         this.updateList.emit(true);
+        Swal.fire('Usuario creado con éxito!', '', 'success');
       } else {
         this.updateList.emit(false);
-        Swal.fire({});
+        Swal.fire('Opss!', 'Ha ocurrido un error', 'error');
       }
     })
     ;
@@ -94,8 +96,7 @@ export class ItemPropertyComponent implements OnInit {
       showDenyButton: false,
       showCancelButton: true,
       confirmButtonText: 'Eliminar',
-      cancelButtonText: 'Cancelar',
-      denyButtonText: `Don't save`,
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.deleteUser();
@@ -104,11 +105,11 @@ export class ItemPropertyComponent implements OnInit {
   };
 
   deleteUser() {
-    this.globalService.deleteUser(this.user).subscribe((resp: any) => {
+    this.globalService.deleteCategory(this.user).subscribe((resp: any) => {
       console.log(resp);
       this.updateList.emit(true);
+      Swal.fire('Usuario eliminado con éxito!', '', 'success');
     });
-    Swal.fire('Usuario eliminado con éxito!', '', 'success');
   }
 
   submit() {

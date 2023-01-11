@@ -18,9 +18,11 @@ import { ProductsComponent } from './pages/products/products.component';
 import { UsersComponent } from './pages/users/users.component';
 import { QuickwinsComponent } from './pages/quickwins/quickwins.component';
 import { QuickItemComponent } from './pages/quickwins/quick-item/quick-item.component';
-import { ItemPropertyComponent } from './components/item-property/item-property.component';
+import { ItemPropertyComponent } from './pages/users/item-property/item-property.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormCategoryComponent } from './pages/category/form-category/form-category.component';
+import { FormProductsComponent } from './pages/products/form-products/form-products.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -29,7 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsersComponent,
     QuickwinsComponent,
     QuickItemComponent,
-    ItemPropertyComponent
+    ItemPropertyComponent,
+    FormCategoryComponent,
+    FormProductsComponent
   ],
   imports: [
     ReactiveFormsModule,

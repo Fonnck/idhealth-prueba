@@ -14,7 +14,6 @@ export class UsersComponent implements OnInit {
     this.getAllUsers();
   }
 
-  /* displayedColumns: string[] = ['Nombre', 'Correo', 'Rol', 'Estado']; */
   users: Usuario[] = [];
 
   updateList(e: boolean) {
@@ -43,12 +42,12 @@ export class UsersComponent implements OnInit {
       nombre: '',
       correo: '',
       estado: true,
-      rol: 'ADMIN_ROLE',
+      rol: 'ADMIN_ROLE'
     });
   }
 
   onRemove(e: boolean) {
     e ? this.users.shift() : null;
   }
-  /* toogleUser */
+
 }

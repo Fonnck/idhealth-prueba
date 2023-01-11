@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable, shareReplay } from 'rxjs';
 import { MENU_ITEMS } from '../../../constants/index';
 
@@ -16,7 +17,14 @@ export class DashboardComponent {
       shareReplay()
     );
 
-    public menu_items = MENU_ITEMS;
+  public menu_items = MENU_ITEMS;
 
-    constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {}
+
+  signOut() {
+    this.router.navigateByUrl('/auth/login');
+  }
 }

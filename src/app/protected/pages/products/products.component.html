@@ -1,1 +1,28 @@
-<p>products works!</p>
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <div class="header-module">
+      <h1>Productos</h1>
+      <button
+        mat-fab
+        color="primary"
+        aria-label="btn to press ok"
+        (click)="onAdd()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="wrapper">
+      <mat-card
+        class="mt-3 animate__animated animate__fadeIn zoom"
+        *ngFor="let product of products"
+      >
+        <mat-card-content>
+          <app-form-category
+            [category]="product"
+            (updateList)="updateList($event)"
+            (deleteElement)="onRemove($event)"
+          ></app-form-category>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
